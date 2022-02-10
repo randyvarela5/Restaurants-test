@@ -7,23 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E224BC1527A11CA000662529 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E224BC1427A11CA000662529 /* DetailsViewController.swift */; };
 		E265F8C0279BC4D000F228C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E265F8BF279BC4D000F228C0 /* AppDelegate.swift */; };
 		E265F8C2279BC4D000F228C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E265F8C1279BC4D000F228C0 /* SceneDelegate.swift */; };
-		E265F8C4279BC4D000F228C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E265F8C3279BC4D000F228C0 /* ViewController.swift */; };
 		E265F8C7279BC4D000F228C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E265F8C5279BC4D000F228C0 /* Main.storyboard */; };
 		E265F8C9279BC4D200F228C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E265F8C8279BC4D200F228C0 /* Assets.xcassets */; };
 		E265F8CC279BC4D200F228C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E265F8CA279BC4D200F228C0 /* LaunchScreen.storyboard */; };
+		E265F8D6279BC7BE00F228C0 /* InternetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E265F8D5279BC7BE00F228C0 /* InternetsViewController.swift */; };
+		E265F8D8279BCA8200F228C0 /* LunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E265F8D7279BCA8200F228C0 /* LunchViewController.swift */; };
+		E2858E3D279FC5C500F11C35 /* RestaurantsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2858E3C279FC5C500F11C35 /* RestaurantsData.swift */; };
+		E2858E3F279FC8BC00F11C35 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2858E3E279FC8BC00F11C35 /* CustomCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E224BC1427A11CA000662529 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		E265F8BC279BC4D000F228C0 /* BR Eng Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BR Eng Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E265F8BF279BC4D000F228C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E265F8C1279BC4D000F228C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E265F8C3279BC4D000F228C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E265F8C6279BC4D000F228C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E265F8C8279BC4D200F228C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E265F8CB279BC4D200F228C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E265F8CD279BC4D200F228C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E265F8D5279BC7BE00F228C0 /* InternetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetsViewController.swift; sourceTree = "<group>"; };
+		E265F8D7279BCA8200F228C0 /* LunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchViewController.swift; sourceTree = "<group>"; };
+		E2858E3C279FC5C500F11C35 /* RestaurantsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsData.swift; sourceTree = "<group>"; };
+		E2858E3E279FC8BC00F11C35 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,43 @@
 		E265F8BE279BC4D000F228C0 /* BR Eng Test */ = {
 			isa = PBXGroup;
 			children = (
+				E2C518E2279F341B00071C9A /* Model */,
+				E2C518E3279F342A00071C9A /* View */,
+				E2C518E4279F343B00071C9A /* Controller */,
 				E265F8BF279BC4D000F228C0 /* AppDelegate.swift */,
 				E265F8C1279BC4D000F228C0 /* SceneDelegate.swift */,
-				E265F8C3279BC4D000F228C0 /* ViewController.swift */,
-				E265F8C5279BC4D000F228C0 /* Main.storyboard */,
 				E265F8C8279BC4D200F228C0 /* Assets.xcassets */,
-				E265F8CA279BC4D200F228C0 /* LaunchScreen.storyboard */,
 				E265F8CD279BC4D200F228C0 /* Info.plist */,
 			);
 			path = "BR Eng Test";
+			sourceTree = "<group>";
+		};
+		E2C518E2279F341B00071C9A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E2858E3C279FC5C500F11C35 /* RestaurantsData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E2C518E3279F342A00071C9A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E265F8C5279BC4D000F228C0 /* Main.storyboard */,
+				E265F8CA279BC4D200F228C0 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E2C518E4279F343B00071C9A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E265F8D7279BCA8200F228C0 /* LunchViewController.swift */,
+				E265F8D5279BC7BE00F228C0 /* InternetsViewController.swift */,
+				E2858E3E279FC8BC00F11C35 /* CustomCollectionViewCell.swift */,
+				E224BC1427A11CA000662529 /* DetailsViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E265F8C4279BC4D000F228C0 /* ViewController.swift in Sources */,
+				E2858E3F279FC8BC00F11C35 /* CustomCollectionViewCell.swift in Sources */,
+				E265F8D8279BCA8200F228C0 /* LunchViewController.swift in Sources */,
+				E2858E3D279FC5C500F11C35 /* RestaurantsData.swift in Sources */,
 				E265F8C0279BC4D000F228C0 /* AppDelegate.swift in Sources */,
+				E224BC1527A11CA000662529 /* DetailsViewController.swift in Sources */,
 				E265F8C2279BC4D000F228C0 /* SceneDelegate.swift in Sources */,
+				E265F8D6279BC7BE00F228C0 /* InternetsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
