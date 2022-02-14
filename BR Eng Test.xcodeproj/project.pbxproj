@@ -15,6 +15,7 @@
 		E265F8CC279BC4D200F228C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E265F8CA279BC4D200F228C0 /* LaunchScreen.storyboard */; };
 		E265F8D6279BC7BE00F228C0 /* InternetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E265F8D5279BC7BE00F228C0 /* InternetsViewController.swift */; };
 		E265F8D8279BCA8200F228C0 /* LunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E265F8D7279BCA8200F228C0 /* LunchViewController.swift */; };
+		E27E0C9F27B701C600E2EA91 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27E0C9E27B701C600E2EA91 /* ImageCache.swift */; };
 		E2858E3D279FC5C500F11C35 /* RestaurantsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2858E3C279FC5C500F11C35 /* RestaurantsData.swift */; };
 		E2858E3F279FC8BC00F11C35 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2858E3E279FC8BC00F11C35 /* CustomCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		E265F8CD279BC4D200F228C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E265F8D5279BC7BE00F228C0 /* InternetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetsViewController.swift; sourceTree = "<group>"; };
 		E265F8D7279BCA8200F228C0 /* LunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchViewController.swift; sourceTree = "<group>"; };
+		E27E0C9E27B701C600E2EA91 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		E2858E3C279FC5C500F11C35 /* RestaurantsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsData.swift; sourceTree = "<group>"; };
 		E2858E3E279FC8BC00F11C35 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				E265F8D7279BCA8200F228C0 /* LunchViewController.swift */,
+				E27E0C9E27B701C600E2EA91 /* ImageCache.swift */,
 				E265F8D5279BC7BE00F228C0 /* InternetsViewController.swift */,
 				E2858E3E279FC8BC00F11C35 /* CustomCollectionViewCell.swift */,
 				E224BC1427A11CA000662529 /* DetailsViewController.swift */,
@@ -176,6 +179,7 @@
 			files = (
 				E2858E3F279FC8BC00F11C35 /* CustomCollectionViewCell.swift in Sources */,
 				E265F8D8279BCA8200F228C0 /* LunchViewController.swift in Sources */,
+				E27E0C9F27B701C600E2EA91 /* ImageCache.swift in Sources */,
 				E2858E3D279FC5C500F11C35 /* RestaurantsData.swift in Sources */,
 				E265F8C0279BC4D000F228C0 /* AppDelegate.swift in Sources */,
 				E224BC1527A11CA000662529 /* DetailsViewController.swift in Sources */,

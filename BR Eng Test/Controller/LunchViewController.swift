@@ -12,7 +12,7 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     var restaurants: [Restaurant] = []
     var selectedRestaurant: Restaurant?
-    var images: [String: Data] = [:]
+    
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -20,11 +20,11 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureItems()
-        
         collectionView.dataSource = self
         collectionView.delegate = self
         navigationItem.title = "Lunch Tyme"
         //print("top of viewDidLoad: \(selectedRestaurant)")
+        
         
         func configureItems() {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_map"), style: .done, target: self, action: nil)
@@ -60,6 +60,7 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCollectionViewCell
         
         //Pass in Restaurants Data here
+        
         cell.restaurantLabel.text = restaurants[indexPath.row].name
         cell.imageView.contentMode = .scaleAspectFit
         cell.categoryLabel.text = restaurants[indexPath.row].category
@@ -96,25 +97,51 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
 }
 
 extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
-        contentMode = mode
-        //Create custom URL ext with caching enabled
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-            else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = image
-            }
-        }.resume()
-    }
+    //function overloading, this is being called first because im not passing in a URL
     func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         downloaded(from: url, contentMode: mode)
     }
+    
+    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
+        contentMode = mode
+        //check if imageData is in dict, if not, run the data task. if it is, lets use it
+        if let imageData = ImageCache.shared.images[url.absoluteString], let image = UIImage(data: imageData) {
+            print("Using Cached images")
+            self.image = image
+        } else {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard
+                    //figure out how to include more than just 200 response 200...299
+                    let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                    //understand mimetype,
+                    let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                    let data = data, error == nil,
+                    let image = UIImage(data: data)
+                else { return }
+                //add to imageData to dict
+                ImageCache.shared.images[url.absoluteString] = data
+                DispatchQueue.main.async() { [weak self] in
+                    
+                    self?.image = image
+                }
+            }.resume()
+            
+        }
+        
+    }
+    
+
 }
 
-
+//URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
+//    guard
+//        let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+//        let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+//        let data = data, error == nil,
+//        let image = UIImage(data: data)
+//    else { return }
+//    DispatchQueue.main.async() { [weak self] in
+//        self?.image = image
+//    }
+//})
