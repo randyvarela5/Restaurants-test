@@ -9,11 +9,8 @@ import UIKit
 
 
 class LunchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     var restaurants: [Restaurant] = []
     var selectedRestaurant: Restaurant?
-    
-    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -23,8 +20,6 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
         collectionView.dataSource = self
         collectionView.delegate = self
         navigationItem.title = "Lunch Tyme"
-        //print("top of viewDidLoad: \(selectedRestaurant)")
-        
         
         func configureItems() {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_map"), style: .done, target: self, action: nil)
@@ -33,10 +28,12 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
         guard let url = URL(string: "https://s3.amazonaws.com/br-codingexams/restaurants.json#") else {
             return
         }
+        
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
                 return
             }
+            
             if error == nil{
                 
                 do {
@@ -52,6 +49,7 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
             }
         }.resume()
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return restaurants.count
     }
@@ -59,15 +57,11 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCollectionViewCell
         
-        //Pass in Restaurants Data here
-        
         cell.restaurantLabel.text = restaurants[indexPath.row].name
         cell.imageView.contentMode = .scaleAspectFit
         cell.categoryLabel.text = restaurants[indexPath.row].category
         
-        
         let completeLink = restaurants[indexPath.row].backgroundImageURL
-        print(completeLink)
         
         cell.imageView.downloaded(from: completeLink)
         return cell
@@ -80,24 +74,17 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedRestaurant = restaurants[indexPath.row]
         performSegue(withIdentifier: "goToDetails", sender: self)
-        //print("collectionView func: this was selected: \(selectedRestaurant)")
-        //i need to tell this VC about DetailsVC so i can send over selectedRestaurant
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToDetails" {
-            let destinationVC = segue.destination as! DetailsViewController //topViewController
+            let destinationVC = segue.destination as! DetailsViewController
             destinationVC.restaurant = self.selectedRestaurant
-            print("prepare func: this was selected: \(String(describing: selectedRestaurant))")
-            
         }
-        
     }
 }
 
 extension UIImageView {
-    //function overloading, this is being called first because im not passing in a URL
     func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         downloaded(from: url, contentMode: mode)
@@ -105,43 +92,25 @@ extension UIImageView {
     
     func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
         contentMode = mode
-        //check if imageData is in dict, if not, run the data task. if it is, lets use it
         if let imageData = ImageCache.shared.images[url.absoluteString], let image = UIImage(data: imageData) {
             print("Using Cached images")
             self.image = image
         } else {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 guard
-                    //figure out how to include more than just 200 response 200...299
                     let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                    //understand mimetype,
                     let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
                     let data = data, error == nil,
                     let image = UIImage(data: data)
                 else { return }
-                //add to imageData to dict
                 ImageCache.shared.images[url.absoluteString] = data
                 DispatchQueue.main.async() { [weak self] in
                     
                     self?.image = image
                 }
             }.resume()
-            
         }
-        
     }
-    
-
 }
 
-//URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
-//    guard
-//        let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-//        let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-//        let data = data, error == nil,
-//        let image = UIImage(data: data)
-//    else { return }
-//    DispatchQueue.main.async() { [weak self] in
-//        self?.image = image
-//    }
-//})
+

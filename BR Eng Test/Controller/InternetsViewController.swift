@@ -9,8 +9,6 @@ import UIKit
 import WebKit
 
 class InternetsViewController: UIViewController {
-
-    
     let webView = WKWebView()
     
     override func viewDidLoad() {
@@ -23,8 +21,8 @@ class InternetsViewController: UIViewController {
         guard let url = URL(string: "https://www.bottlerocketstudios.com") else {
             return
         }
-        webView.load(URLRequest(url: url))
         
+        webView.load(URLRequest(url: url))
     }
     
     private func configureItems() {
@@ -41,20 +39,15 @@ class InternetsViewController: UIViewController {
     
     @objc private func backTapped() {
         webView.goBack()
-        print("backtapped")
     }
     
     @objc private func refreshTapped() {
         webView.reload()
-        print("refresh tapped")
     }
     
     @objc private func forwardTapped() {
         webView.goForward()
-        print("Forward tapped")
     }
-    
-    
 }
 
 
