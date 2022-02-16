@@ -12,4 +12,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var restaurantLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
+    
 }
+ 

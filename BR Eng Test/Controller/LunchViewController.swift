@@ -85,12 +85,12 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
 }
 
 extension UIImageView {
-    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
+    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFill) {
         guard let url = URL(string: link) else { return }
         downloaded(from: url, contentMode: mode)
     }
     
-    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
+    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFill) {
         contentMode = mode
         if let imageData = ImageCache.shared.images[url.absoluteString], let image = UIImage(data: imageData) {
             print("Using Cached images")
