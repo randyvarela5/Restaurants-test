@@ -25,6 +25,8 @@ class InternetsViewController: UIViewController {
         webView.load(URLRequest(url: url))
     }
     
+    //MARK: - Navigation bar buttons
+    
     private func configureItems() {
         navigationItem.leftBarButtonItems = [
             UIBarButtonItem(image: UIImage(named: "ic_webBack"), style: .done, target: self, action: #selector(backTapped)),
@@ -32,10 +34,13 @@ class InternetsViewController: UIViewController {
             UIBarButtonItem(image: UIImage(named: "ic_webForward"), style: .done, target: self, action: #selector(forwardTapped))
         ]
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         webView.frame = view.bounds
     }
+    
+    //MARK: - Navigation bar button actions
     
     @objc private func backTapped() {
         webView.goBack()

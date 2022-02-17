@@ -11,6 +11,8 @@ import CoreLocation
 
 class DetailsViewController: UIViewController {
 
+    //MARK: - IBOutlets
+    
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var categoryTypeLabel: UILabel!
     @IBOutlet weak var restaurantAddressLabel: UILabel!
@@ -30,6 +32,9 @@ class DetailsViewController: UIViewController {
         title = "Lunch Tyme"
         configureItems()
         centerViewOnLocation()
+        
+        //MARK: - Passing in restaurant details from cell user selected
+        
         restaurantNameLabel.text = restaurant?.name
         categoryTypeLabel.text = restaurant?.category ?? "no category"
         restaurantAddressLabel.text = restaurant?.location.formattedAddress.joined(separator: ", ")
@@ -37,7 +42,9 @@ class DetailsViewController: UIViewController {
         twitterLabel.text = ("@\(restaurant?.contact?.twitter ?? "No twitter")")
     }
     
-    func centerViewOnLocation() {
+    //MARK: - Passing in restaurant coordinates to map
+    
+    private func centerViewOnLocation() {
         let coordinate = CLLocationCoordinate2D(latitude: restaurant?.location.lat ?? 0.0, longitude: restaurant?.location.lng ?? 0.0)
             let region = MKCoordinateRegion.init(center: coordinate, latitudinalMeters: 100, longitudinalMeters: 100)
             mapView.setRegion(region, animated: true)
@@ -45,7 +52,9 @@ class DetailsViewController: UIViewController {
             mapView.addAnnotation(restaurantAnnotation)
     }
     
-    func configureItems() {
+    //MARK: - navigation bar button items and actions
+    
+    private func configureItems() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_map"), style: .done, target: self, action: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_webBack"), style: .done, target: self, action: #selector(closeTapped))
    }

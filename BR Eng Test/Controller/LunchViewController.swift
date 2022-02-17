@@ -9,8 +9,13 @@ import UIKit
 
 
 class LunchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    //MARK: - Properties
+    
     var restaurants: [Restaurant] = []
     var selectedRestaurant: Restaurant?
+    
+    //MARK: - IBOutlets
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -21,9 +26,13 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
         collectionView.delegate = self
         navigationItem.title = "Lunch Tyme"
         
+        //MARK: - Navigation Bar buttons
+        
         func configureItems() {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_map"), style: .done, target: self, action: nil)
         }
+        
+        //MARK: - Call to URL
         
         guard let url = URL(string: "https://s3.amazonaws.com/br-codingexams/restaurants.json#") else {
             return
@@ -49,6 +58,8 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
             }
         }.resume()
     }
+    
+  //MARK: - collectionView setup
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return restaurants.count
@@ -76,6 +87,8 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
         performSegue(withIdentifier: "goToDetails", sender: self)
     }
     
+    //MARK: - Segue to restaurant details
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToDetails" {
             let destinationVC = segue.destination as! DetailsViewController
@@ -83,6 +96,8 @@ class LunchViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
     }
 }
+
+//MARK: - Setting the image and checking/adding to dictionary to cache image
 
 extension UIImageView {
     func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFill) {
